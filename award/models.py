@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime as dt 
 # Create your models here.
 class Profile(models.Model):
     photo=models.ImageField(upload_to='pic/')
@@ -36,7 +37,11 @@ class Project(models.Model):
      def update_description(self,des):
          self.description=des
          self.save() 
-
-
+class Review(models.Model):
+     design=models.CharField(max_length=100)
+     usability=models.CharField(max_length=100)
+     content=HTMLField()
+     profile=models.ForeignKey(Profile, null=True)
+     project=models.ForeignKey(Project, null=True)
 
 
