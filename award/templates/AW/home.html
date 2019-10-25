@@ -15,11 +15,11 @@
     </div>
     <div class="row">
 
-        {% for img in image %}
+        {% for pos in post %}
 
         <div class="col-md-4">
-            <a data-toggle="modal" data-target="#{{img.id}}">
-                <img style="margin-top:20px; margin-bottom:20px;" src="{{img.image.url}}" alt="Image" height="200"
+            <a data-toggle="modal" data-target="#{{pos.id}}">
+                <img style="margin-top:20px; margin-bottom:20px;" src="{{pos.image.url}}" alt="Image" height="200"
                     width="300"><br><br>
             </a>
         </div>
@@ -33,12 +33,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <p style="color:rgb(168, 105, 105);">{{img.title}}</p>
+                        <p style="color:rgb(168, 105, 105);">{{pos.title}}</p>
 
                     </div>
                     <div class="modal-body">
-                        <img src="{{img.image.url}}" alt="Image" width='400' length='500'>
-                        <p class="modal-title"><strong>{{img.description}}</strong></p>
+                        <img src="{{pos.image.url}}" alt="Image" width='400' length='500'>
+                        <p class="modal-title"><strong>{{pos.description}}</strong></p>
                         <!-- The button used to copy the text -->
 
                     </div>
