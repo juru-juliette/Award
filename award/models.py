@@ -6,8 +6,8 @@ from tinymce.models import HTMLField
 class Profile(models.Model):
     photo=models.ImageField(upload_to='pic/')
     bio=models.TextField()
-    username=models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
-    email = models.EmailField(max_length=100)
+    user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
+    phone_number=models.IntegerField(null=True)
     def save_profile(self):
         self.save()
     def delete_profile(self):
@@ -38,8 +38,21 @@ class Project(models.Model):
          self.description=des
          self.save() 
 class Review(models.Model):
-     design=models.CharField(max_length=100)
-     usability=models.CharField(max_length=100)
-     content=HTMLField()
-     profile=models.ForeignKey(Profile, null=True)
-     project=models.ForeignKey(Project, null=True)
+     design=models.IntegerField()
+     usability=models.IntegerField()
+     content=models.IntegerField()
+     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+     project=models.ForeignKey(Project)
+     total=models.IntegerField()
+     avg=models.IntegerField(null=True)
+     comment=models.TextField(null=True)
+
+     def save_review(self):
+         self.save()
+     def delete_review(self):
+         self.delete()
+
+     def update_comment(self,comment):
+         self.comment=comment
+         self.save()
+
