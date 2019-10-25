@@ -9,18 +9,19 @@ from django.contrib.auth.models import User
 @login_required(login_url='/accounts/login/')
 def home(request):
     title='Awards'
-    return render(request,'AW/home.html',{'title':title })
+    post=Project.objects.all()
+    return render(request,'AW/home.html',{'title':title ,'post':post})
 
 @login_required(login_url='/accounts/login/')
-def new_post(request):
+def post(request):
     current_user = request.user
     if request.method == 'POST':
         form = NewPostForm(request.POST, request.FILES)
         if form.is_valid():
-            image = form.save(commit=False)
-            image.user = current_user
+            post = form.save(commit=False)
+            post.user = current_user
             
-            image.save()
+            post.save()
         return redirect('home')
 
     else:
