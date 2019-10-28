@@ -10,37 +10,39 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 <style>
-#top{
-  background-color: #111;
-  height:500px;
-  width: 100%;
-  
-}
+  #top {
+    background-color: #111;
+    height: 500px;
+    width: 100%;
+
+  }
 </style>
 <div class="container-fluid">
-    <div id="top">
-        <h1 style="font-family: 'Big Shoulders Text', cursive; font-size: 50px; text-align: center;"><img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQH9UxfrcOFohhpsd0KZKC3dh-mKRGbsaBZ6ERLa4DV8AszSo_"
-                width="60" height="60" alt="img"><span>PRO-AWARDS</span></h1>
-    </div>
-   
-        
-         {%for proj in post %}
-        
-           <div class="col-md-3" >
-             <div class="panel hh">
-            <div style="padding:4px;">
-           <p class="panel panel-heading">{{proj.title}}</p>
-           <div class="panel panel-body">
-          <a href="/project/{{proj.id}}" > <img src="{{proj.image.url}}" alt="" height="250" id="img" ></a>
-           <p>{{proj.description}}</p>
-          </div>
-           <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
-          </div>
-          </div>
+  <div id="top">
+    <h1 style="font-family: 'Big Shoulders Text', cursive; font-size: 50px; text-align: center;"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQH9UxfrcOFohhpsd0KZKC3dh-mKRGbsaBZ6ERLa4DV8AszSo_"
+        width="60" height="60" alt="img"><span>PRO-AWARDS</span></h1>
+  </div>
+
+
+  {%for proj in post %}
+
+  <div class="col-md-3">
+    <div class="panel hh">
+      <div style="padding:4px;">
+        <p class="panel panel-heading">{{proj.title}}</p>
+        <div class="panel panel-body">
+          <a href="/project/{{proj.id}}"> <img src="{{proj.image.url}}" alt="" height="250" id="img"></a>
+          {% autoescape on %}
+          {{proj.description| safe}}
+          {% endautoescape %}
         </div>
-        
-         {%endfor%}
+        <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
+      </div>
+    </div>
+  </div>
+
+  {%endfor%}
 
 
 </div>
