@@ -1,23 +1,23 @@
-{%extends 'IG/base.html'%} 
+{%extends 'AW/base.html'%} 
 {% block content %}
 <div class="container">
 
   <div class="row">
-    {% if projects%}
-      <h2>Found {{ users|length }} of searched term {{message}}</h2>
+    {% if project%}
+      <h2>Found {{ project|length }} of searched term {{message}}</h2>
     {% else %}
-      <h2> Found 0 users for the search term {{message}}</h2>
+      <h2> Found 0 project for the search term {{message}}</h2>
     {% endif %}
 
   </div>
 
   <div class="row">
 
-  {% if projects %}
-    {% for post in projects %}
+  {% if project %}
+    {% for proj in project %}
       <div class="col-sm-6 col-md-3">
-          <h2>{{post.title}}</h2>
-          <img src="{{post.image.url}}" class="img-responsive" alt="Image">
+          <h2>{{proj.title}}</h2>
+          <img src="{{proj.image.url}}" class="img-responsive" alt="Image">
 
       </div>
     {% endfor %}

@@ -18,10 +18,7 @@ class Profile(models.Model):
     def update_bio(self,bio):
          self.bio=bio
          self.save()
-    @classmethod
-    def search_by_title(cls,search_term):
-       users=cls.objects.filter(username__username__icontains=search_term)
-       return users
+    
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
@@ -32,7 +29,7 @@ class Project(models.Model):
      title=models.CharField(max_length=100)
      image=models.ImageField(upload_to = 'pic/')
      description=HTMLField()
-     pub_date = models.DateTimeField(auto_now_add=True)
+     link= models.CharField(max_length=200)
      profile=models.ForeignKey(Profile, null=True)
      user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
      view_grade=models.IntegerField(null=True)
@@ -44,7 +41,11 @@ class Project(models.Model):
        
      def update_description(self,des):
          self.description=des
-         self.save() 
+         self.save()
+     @classmethod
+     def search_project(cls,search_term):
+       project=cls.objects.filter(title__icontains=search_term)
+       return project 
 class Review(models.Model):
      design=models.IntegerField()
      usability=models.IntegerField()
