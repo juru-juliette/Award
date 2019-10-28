@@ -14,25 +14,24 @@ def home(request):
     return render(request,'AW/home.html',{'title':title ,'post':post,'profile':profile})
 
 @login_required(login_url='/accounts/login/')
-def profile(request):
-     current_user = request.user
-     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.username = current_user
-            profile.save()
-
-        return redirect('edit_profile')
-
-     else:
-        form = ProfileForm()
-     return render(request, 'AW/profile.html', {"form": form})
+def profile(request,id):
+   user_object = request.user
+   current_user = Profile.objects.get(username__id=request.user.id)
+   user = Profile.objects.get(username__id=id)
+   projects = Project.objects.filter(upload_by = user)
+   projects = Project.objects.all()
+   return render(request, "AW/profile.html", {"current_user":current_user,"projects":projects,"user":user,"user_object":user_object})
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
-    current_user = request.user
-    picture = Profile.objects.filter(user= current_user).first()
-    return render(request, 'AW/edit_profile.html', { "picture":picture})
+   current_user=request.user
+   user_edit = Profile.objects.get(username__id=current_user.id)
+   if request.method =='POST':
+       form=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
+       if form.is_valid():
+           form.save()
+   else:
+       form=ProfileForm(instance=request.user.profile)
+   return render(request,'AW/edit_profile.html',locals())
 
 @login_required(login_url='/accounts/login/')
 def post(request):
