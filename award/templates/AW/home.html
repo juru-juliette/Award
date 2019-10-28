@@ -4,57 +4,43 @@
 {% block content %}
 {{block.super}}
 <link href="https://fonts.googleapis.com/css?family=Cookie|Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text&display=swap" rel="stylesheet">
 {% block styles %}
 {% bootstrap_css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
-
-<div class="container">
-    <div>
-        <h1 style="text-align:center;font-family: 'Cookie', cursive; font-size: 70px;"><img
+<style>
+#top{
+  background-color: #111;
+  height:500px;
+  width: 100%;
+  
+}
+</style>
+<div class="container-fluid">
+    <div id="top">
+        <h1 style="font-family: 'Big Shoulders Text', cursive; font-size: 50px; text-align: center;"><img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQH9UxfrcOFohhpsd0KZKC3dh-mKRGbsaBZ6ERLa4DV8AszSo_"
-                width="60" height="60" alt="img"> Awards</h1>
+                width="60" height="60" alt="img"><span>PRO-AWARDS</span></h1>
     </div>
-    <div class="row">
-
-        {% for pos in post %}
-
-        <div class="col-md-4">
-            <a data-toggle="modal" data-target="#{{pos.id}}">
-                <img style="margin-top:20px; margin-bottom:20px;" src="{{pos.image.url}}" alt="Image" height="200"
-                    width="300"><br><br>
-            </a>
+   
+        
+         {%for proj in post %}
+        
+           <div class="col-md-3" >
+             <div class="panel hh">
+            <div style="padding:4px;">
+           <p class="panel panel-heading">{{proj.title}}</p>
+           <div class="panel panel-body">
+          <a href="/project/{{proj.id}}" > <img src="{{proj.image.url}}" alt="" height="250" id="img" ></a>
+           <p>{{proj.description}}</p>
+          </div>
+           <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
+          </div>
+          </div>
         </div>
-
-
-        <div id="{{pos.id}}" class="modal fade" role="dialog"
-            style="background-color:rgb(47, 61, 61);font-family: monospace;">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <p style="color:rgb(168, 105, 105);">{{pos.title}}</p>
-
-                    </div>
-                    <div class="modal-body">
-                        <img src="{{pos.image.url}}" alt="Image" width='400' length='500'>
-                        <p class="modal-title"><strong>{{pos.description}}</strong></p>
-                        <!-- The button used to copy the text -->
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal"
-                            style="background-color:rgb(168, 105, 105);color:white;">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        {% endfor %}
-
-    </div>
+        
+         {%endfor%}
 
 
 </div>

@@ -5,8 +5,8 @@ from . import views
 urlpatterns=[
     url('^$',views.home,name = 'home'),
     url(r'^post$', views.post, name='post'),
-    url(r'^profile/(\d+)',views.profile,name ='profile') ,
-    url(r'^edit_profile/(\d+)',views.edit_profile,name ='edit_profile') ,
+    url(r'^profile/', views.profile, name='profile'),
+    url(r'^edit_profile/', views.edit_profile, name='edit_profile'),
 ]
 ## this references the location to the uploaded files.
 if settings.DEBUG:
