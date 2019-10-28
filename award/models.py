@@ -19,7 +19,7 @@ class Profile(models.Model):
          self.bio=bio
          self.save()
     @classmethod
-    def search_by_username(cls,search_term):
+    def search_by_title(cls,search_term):
        users=cls.objects.filter(username__username__icontains=search_term)
        return users
 

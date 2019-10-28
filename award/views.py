@@ -49,3 +49,16 @@ def post(request):
     else:
         form = NewPostForm()
     return render(request, 'AW/post.html', {"form": form})
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+
+    if 'user' in request.GET and request.GET["user"]:
+        search_term = request.GET.get("user")
+        searched_users = Profile.search_by_username(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'IG/search.html',{"message":message,"users": searched_users})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'AW/search.html',{"message":message})

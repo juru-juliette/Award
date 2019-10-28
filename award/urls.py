@@ -7,6 +7,7 @@ urlpatterns=[
     url(r'^post$', views.post, name='post'),
     url(r'^profile/', views.profile, name='profile'),
     url(r'^edit_profile/', views.edit_profile, name='edit_profile'),
+    url(r'^search/', views.search_results, name='search_results'),
 ]
 ## this references the location to the uploaded files.
 if settings.DEBUG:
