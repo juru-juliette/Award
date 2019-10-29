@@ -11,16 +11,17 @@ def home(request):
     title='Awards'
     post=Project.objects.all()
     profile = Profile.objects.all()
-    return render(request,'AW/home.html',{'title':title ,'post':post,'profile':profile})
+    current_user=request.user
+    return render(request,'AW/home.html',{'title':title ,'post':post,'profile':profile,'current_user':current_user})
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):
    user_object = request.user
    current_user = Profile.objects.get(username__id=request.user.id)
    user = Profile.objects.get(username__id=id)
-   projects = Project.objects.filter(upload_by = user)
    projects = Project.objects.all()
    return render(request, "AW/profile.html", {"current_user":current_user,"projects":projects,"user":user,"user_object":user_object})
+
 @login_required(login_url='/accounts/login/')
 def edit_profile(request):
    current_user=request.user
@@ -29,6 +30,7 @@ def edit_profile(request):
        form=ProfileForm(request.POST,request.FILES,instance=request.user.profile)
        if form.is_valid():
            form.save()
+           return redirect('home')
    else:
        form=ProfileForm(instance=request.user.profile)
    return render(request,'AW/edit_profile.html',locals())

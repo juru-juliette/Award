@@ -8,8 +8,8 @@ from django.dispatch import receiver
 class Profile(models.Model):
     photo=models.ImageField(upload_to='pic/')
     bio=models.TextField()
-    user=models.OneToOneField(User,on_delete=models.CASCADE,related_profile='profile')
-    phone_number=models.IntegerField(max_length=50)
+    username=models.OneToOneField(User,on_delete=models.CASCADE,related_name="profile")
+    phone_number=models.CharField(max_length=50)
     def save_profile(self):
         self.save()
     def delete_profile(self):

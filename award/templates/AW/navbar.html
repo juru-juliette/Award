@@ -37,8 +37,6 @@
           {% if user.is_authenticated %}
           <div >
             
-            
-  
           <ul>
             <li class="dropdown"> <strong>Menu</strong>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" class="d-inline"><i class="glyphicon glyphicon-option-vertical" style="color:black;margin-top:10px;margin-right: 5px;"></i>
@@ -48,12 +46,8 @@
                 <li>
                   <a href="{%url 'home'%}">Home</a>
                 </li>
-  
-                <li>
-                    <a href="{%url 'profile' %}">Add Profile</a>
-                  </li>
                   <li>
-                      <a href="{%url 'edit_profile' %}">view Profile</a>
+                      <a href="{%url 'profile' request.user.id %}">view Profile</a>
                     </li>
               
                 <li>
@@ -76,8 +70,6 @@
           {% endif %}
         </div>
       </div>
-      
-      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
     </div>
 
     
