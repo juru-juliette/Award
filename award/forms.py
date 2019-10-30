@@ -3,7 +3,7 @@ from .models import Project,Profile
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Project
-        exclude = ['profile','view_grade','user']
+        exclude = ['profile','view_grade']
 class ProfileForm(forms.ModelForm):
      class Meta:
          model= Profile

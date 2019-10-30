@@ -31,8 +31,7 @@ class Project(models.Model):
      image=models.ImageField(upload_to = 'pic/')
      description=HTMLField()
      link= models.CharField(max_length=200)
-     profile=models.ForeignKey(Profile, null=True)
-     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+     profile=models.ForeignKey(Profile,null=True)
      view_grade=models.IntegerField(null=True)
      def save_project(self):
          self.save()

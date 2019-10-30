@@ -37,6 +37,7 @@
           {% autoescape on %}
           {{proj.description| safe}}
           {% endautoescape %}
+          <a href="/project/{{proj.link}}"></a>
         </div>
         <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
       </div>
