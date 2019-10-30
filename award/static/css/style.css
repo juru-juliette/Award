@@ -1,10 +1,13 @@
 h1{
-    color: purple;
+    color:#7B241C;
 }
 body{
     font-family: 'Sree Krushnadevaraya', serif;
     font-size:15px;
     background-color: rgb(255,255,255);
   }
+#single{
+    background-color: black;
+}
 
 

@@ -1,5 +1,16 @@
 {% extends 'AW/base.html' %}
+{% load bootstrap3 %}
+{% load static%}
 {% block content %}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+<style>
+  #single{
+    background-color: #E8F6F3;
+  }
+</style>
 <div class="container" id="single">
   <br> <br>
   <div class="row">
