@@ -12,7 +12,7 @@
 {% endblock %}
 <style>
   #top {
-    background-color: #111;
+    background-image: url('https://iitdawards.ie/wp-content/uploads/2016/11/National-Training-Awards-2017-Background.jpg');
     height: 500px;
     width: 100%;
 
@@ -33,11 +33,11 @@
       <div style="padding:4px;">
         <p class="panel panel-heading">{{proj.title}}</p>
         <div class="panel panel-body">
-          <a href="/project/{{proj.id}}"> <img src="{{proj.image.url}}" alt="" height="250" id="img"></a>
+          <img src="{{proj.image.url}}" alt="" height="250" id="img">
           {% autoescape on %}
           {{proj.description| safe}}
           {% endautoescape %}
-          <a href="/project/{{proj.link}}"></a>
+          <a href="{{proj.link}}"><p>view link</p></a>
         </div>
         <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
       </div>
