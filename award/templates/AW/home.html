@@ -31,15 +31,16 @@
   <div class="col-md-3">
     <div class="panel hh">
       <div style="padding:4px;">
-        <p class="panel panel-heading">{{proj.title}}</p>
+        <h1 class="panel panel-heading">{{proj.title}}</h1>
         <div class="panel panel-body">
-          <img src="{{proj.image.url}}" alt="" height="250" id="img">
+          <img src="{{proj.image.url}}" alt="" height="250" id="img"> <br> <br>
           {% autoescape on %}
-          {{proj.description| safe}}
+          <!-- {{proj.description| safe}} -->
           {% endautoescape %}
           <a href="{{proj.link}}"><p>view link</p></a>
+          <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
         </div>
-        <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
+        
       </div>
     </div>
   </div>

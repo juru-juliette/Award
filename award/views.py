@@ -22,7 +22,7 @@ def profile(request,id):
    user_object = request.user
    current_user = Profile.objects.get(username__id=request.user.id)
    user = Profile.objects.get(username__id=id)
-   projects = Project.objects.all()
+   projects = Project.objects.filter(profile=current_user)
    return render(request, "AW/profile.html", {"current_user":current_user,"projects":projects,"user":user,"user_object":user_object})
 
 @login_required(login_url='/accounts/login/')
