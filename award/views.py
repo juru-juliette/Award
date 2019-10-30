@@ -4,7 +4,9 @@ from .models import Project,Profile
 from django.contrib.auth.decorators import login_required
 from .forms import NewPostForm,ProfileForm
 from django.contrib.auth.models import User
-
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProfileSerializer,ProjectSerializer
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -63,3 +65,14 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'AW/search.html',{"message":message})
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profile = Profile.objects.all()
+        serializers = ProfileSerializer(all_profile, many=True)
+        return Response(serializers.data)
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_project = Project.objects.all()
+        serializers = ProjectSerializer(all_project, many=True)
+        return Response(serializers.data)

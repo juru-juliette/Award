@@ -3,7 +3,8 @@
 <div class="container" id="single">
   <br> <br>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
       {% if user.photo %}
       <img src="{{user.photo.url}}" class="rounded img-fluid" alt="" width="200" height="200">
       {% else %}
@@ -12,7 +13,7 @@ https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png
 " class="rounded img-fluid" alt="" width="200" height="200">
       {% endif %}
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" >
       <p class="mt-1 font-weight-bold font-italic">{{user.username.username}}</p>
       {% if user == current_user %}
       <a href="{% url 'edit_profile' %}">
@@ -30,6 +31,7 @@ https://img.icons8.com/metro/48/000000/shutdown.png
       </a>
       {% endif %}
     </div>
+    <div class="col-md-2"></div>
   </div>
   <br>
   {% if user == current_user %}
