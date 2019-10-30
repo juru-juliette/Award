@@ -1,6 +1,17 @@
 {%extends 'AW/base.html'%} 
 {% block content %}
-<div class="container">
+{% load bootstrap3 %}
+{% load static%}
+{% block styles %}
+{% bootstrap_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+<style>
+#one{
+  background-color: #E8F6F3;
+}
+</style>
+<div class="container" id="one">
 
   <div class="row">
     {% if project%}

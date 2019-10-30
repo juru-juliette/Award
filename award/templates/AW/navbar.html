@@ -18,8 +18,14 @@
       </div>
 
       <div class="col-sm-4 col-md-4 navbar-right">
+        {%if user.profile.photo%}
+        <img src="{{user.profile.photo.url}}" alt="profile" height="50px" width="50px"
+          style="border-radius: 50%"> </a>
+        {% else %}
+        <img src="https://avatarfiles.alphacoders.com/115/115265.png" alt="profile" height="50px" width="50px" style="border-radius: 50%">
+        {% endif %}
 
-        <form class="navbar-form" role="search"style="margin-left:15%;" action="{% url 'search_results' %}">
+        <form class="navbar-form" role="search" style="margin-left:15%;" action="{% url 'search_results' %}">
 
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search Project" name="search">
@@ -34,22 +40,24 @@
 
       </div>
       <div class="d-block">
-          {% if user.is_authenticated %}
-          <div >
-            
+        {% if user.is_authenticated %}
+        <div>
+
           <ul>
             <li class="dropdown"> <strong>Menu</strong>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" class="d-inline"><i class="glyphicon glyphicon-option-vertical" style="color:black;margin-top:10px;margin-right: 5px;"></i>
-                      
-                    </a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
+                class="d-inline"><i class="glyphicon glyphicon-option-vertical"
+                  style="color:black;margin-top:10px;margin-right: 5px;"></i>
+
+              </a>
               <ul class="dropdown-menu" role="menu">
                 <li>
                   <a href="{%url 'home'%}">Home</a>
                 </li>
-                  <li>
-                      <a href="{%url 'profile' request.user.id %}">view Profile</a>
-                    </li>
-              
+                <li>
+                  <a href="{%url 'profile' request.user.id %}">view Profile</a>
+                </li>
+
                 <li>
                   <a href="{%url 'post'%}">Add post</a>
                 </li>
@@ -72,13 +80,13 @@
           <li>
             <a class='btn btn-default' href="/accounts/login">Login</a>
           </li>
-    
+
           {% endif %}
         </div>
       </div>
     </div>
 
-    
+
 
   </nav>
 </body>
