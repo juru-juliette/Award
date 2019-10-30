@@ -8,8 +8,8 @@ urlpatterns=[
     url(r'^accounts/profile/(\d+)', views.profile, name='profile'),
     url(r'^accounts/edit_profile/', views.edit_profile, name='edit_profile'),
     url(r'^search/', views.search_results, name='search_results'),
-    url(r'^api/profile/$', views.ProfileList.as_view()),
-    url(r'^api/project/$', views.ProjectList.as_view()),
+    url(r'^api/profile/$', views.ProfileList.as_view(),name='profile'),
+    url(r'^api/project/$', views.ProjectList.as_view(),name='project'),
 ]
 ## this references the location to the uploaded files.
 if settings.DEBUG:
