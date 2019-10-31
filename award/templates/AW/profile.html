@@ -18,12 +18,12 @@
     <div class="col-md-2"></div>
     <div class="col-md-4">
       {% if user.photo %}
-      <img style="border-radius: 50%" src="{{user.photo.url}}" class="rounded img-fluid" alt="" width="200"
-        height="200">
+      <img style="border-radius: 50% ; margin-left: 40%;" src="{{user.photo.url}}" class="rounded img-fluid" alt=""
+        width="200" height="200">
       {% else %}
       <img src="https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1(5 kB)
 https://i0.wp.com/www.winhelponline.com/blog/wp-content/uploads/2017/12/user.png?fit=256%2C256&quality=100&ssl=1
-" class="rounded img-fluid" alt="" width="200" height="200">
+" class="rounded' img-fluid" alt="" width="200" height="200">
       {% endif %}
     </div>
     <div class="col-md-4">
@@ -59,12 +59,18 @@ https://img.icons8.com/nolan/48/000000/plus-math.png
   <div class="row">
     {% for project in projects %}
     <div class="col-md-4">
-      <a href="{{project.image.url}}" data-fancybox="image"
-        data-buttons='["zoom","slideShow","fullScreen","thumbs","share","close"]' data-caption='
-       <p>{{project.tittle}}</p>
-       <p>{{project.description}}</p>'></a>
+      <h1>{{project.title}}</h1>
       <img src="{{project.image.url}}" alt="" width="300" height="200">
+      <p><strong>{% autoescape on %}
+          {{project.description| safe}}
+          {% endautoescape %}</strong></p>
       </a>
+      <h1 style="text-align: center; text-decoration: underline">Votes</h1>
+      
+      <p style="text-align: center;">Design:{{grades.design}}</p>
+      <p style="text-align: center;">Usability:{{grades.usability}}</p>
+      <p style="text-align: center;">Content:{{grades.content}}</p>
+      
     </div>
     {% endfor %}
   </div>
