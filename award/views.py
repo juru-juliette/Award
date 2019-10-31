@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,HttpResponseRedirect
-from .models import Project,Profile
+from .models import Project,Profile,Review
 from django.contrib.auth.decorators import login_required
-from .forms import NewPostForm,ProfileForm
+from .forms import NewPostForm,ProfileForm,GradeForm
 from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -97,7 +97,7 @@ def grade_project(request,id):
      current_user=request.user
      project=Project.objects.get(id=id)
      if request.method == 'POST':
-        form = Gradeform(request.POST, request.FILES)
+        form = GradeForm(request.POST, request.FILES)
         if form.is_valid():
             grade = form.save(commit=False)
             grade.user = current_user
@@ -108,7 +108,7 @@ def grade_project(request,id):
         return redirect('home')
 
      else:
-        form = Gradeform()
-     return render(request, 'grade.html', {"form": form, 'proj':project})
+        form = GradeForm()
+     return render(request, 'AW/grade.html', {"form": form, 'proj':project})
 
     

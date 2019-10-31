@@ -15,38 +15,60 @@
     background-image: url('https://iitdawards.ie/wp-content/uploads/2016/11/National-Training-Awards-2017-Background.jpg');
     height: 500px;
     width: 100%;
+  }
 
+  .panel-body {
+    background-color: grey;
+    width: 500px;
+    height: 350px;
+  }
+
+  .panel-heading {
+    background-color: rgb(150, 147, 147);
+    font-size: 100%;
+  }
+
+  .panel-footer {
+    margin-top: 10%;
   }
 </style>
 <div class="container-fluide">
-  <div id="top"> <br> <br> <br> <br>
-    <br> <br> <h1 style="font-family: 'Big Shoulders Text', cursive; font-size: 50px; text-align: center; color: #7B241C;"><img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQH9UxfrcOFohhpsd0KZKC3dh-mKRGbsaBZ6ERLa4DV8AszSo_"
-        width="60" height="60" alt="img"> <br><span>PRO-AWARDS</span></h1>
-  </div>
+  <div class="row">
+    <div id="top"> <br> <br> <br> <br>
+      <br> <br>
+      <h1 style="font-family: 'Big Shoulders Text', cursive; font-size: 50px; text-align: center; color: #7B241C;"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQH9UxfrcOFohhpsd0KZKC3dh-mKRGbsaBZ6ERLa4DV8AszSo_"
+          width="60" height="60" alt="img"> <br><span>PRO-AWARDS</span></h1>
+    </div>
 
 
-  {%for proj in post %}
+    {%for proj in post %}
 
-  <div class="col-md-3">
-    <div class="panel hh">
-      <div style="padding:4px;">
-        <h1 class="panel panel-heading">{{proj.title}}</h1>
-        <div class="panel panel-body">
-          <img src="{{proj.image.url}}" alt="" height="250" id="img"> <br> <br>
-          {% autoescape on %}
-          <!-- {{proj.description| safe}} -->
-          {% endautoescape %}
-          <a href="{{proj.link}}"><p>view link</p></a>
-          <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
+    <div class="col-md-4">
+      <div class="col-md-12 col-md-offset-1 col-sm-12">
+        <div class="uk-card uk-card-default uk-card-body uk-width-25-2@m" style="margin-bottom: 5px;">
+          <h1 class="panel panel-heading">
+            {{proj.title}}</h1>
+          <div class="panel panel-body">
+            <img style=" margin-top: 10px; margin-bottom: 5px;width:400px; height:200px;" src="{{proj.image.url}}"
+              class="img-thumbnail photo" alt="Image" data-toggle="modal" data-target="#{{image.id}}">
+            <hr class="uk-divider-icon">
+            <div class="search-title-center">
+
+              <p style="font-family: 'Acme', sans-serif;;text-align: center;background-color:gray"><a
+                  href="{{proj.link}}">View details</a></p>
+              <a href="/grade/{{proj.id}}" class="panel panel-footer"> <button>Grade</button> </a>
+            </div>
+          </div>
         </div>
-        
       </div>
     </div>
+      <!--  -->
+      
+    
+
+    {%endfor%}
   </div>
-
-  {%endfor%}
-
 
 </div>
 
