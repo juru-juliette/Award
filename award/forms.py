@@ -10,9 +10,6 @@ class ProfileForm(forms.ModelForm):
          model= Profile
          exclude = ['user']
 class GradeForm(forms.ModelForm):
-     design= forms.IntegerField()
-     usability= forms.IntegerField()
-     content= forms.IntegerField()
      class Meta:
          model= Review
          exclude = ['user','project','total','avg']

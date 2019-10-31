@@ -10,7 +10,7 @@ urlpatterns=[
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^api/profile/$', views.ProfileList.as_view(),name='profile'),
     url(r'^api/project/$', views.ProjectList.as_view(),name='project'),
-     url(r'^grade/(\d+)',views.grade_project,name ='grade') ,
+    url(r'^grade/(\d+)',views.grade_project,name ='grade') ,
 ]
 ## this references the location to the uploaded files.
 if settings.DEBUG:

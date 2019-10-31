@@ -14,8 +14,9 @@ def home(request):
     title='Awards'
     post=Project.objects.all()
     profile = Profile.objects.all()
+    grade= Review.objects.all()
     current_user=request.user
-    return render(request,'AW/home.html',{'title':title ,'post':post,'profile':profile,'current_user':current_user})
+    return render(request,'AW/home.html',{'title':title ,'post':post,'profile':profile,'current_user':current_user,'grade':grade})
 
 @login_required(login_url='/accounts/login/')
 def profile(request,id):

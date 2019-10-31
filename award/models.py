@@ -47,9 +47,9 @@ class Project(models.Model):
        project=cls.objects.filter(title__icontains=search_term)
        return project 
 class Review(models.Model):
-     design=models.IntegerField()
-     usability=models.IntegerField()
-     content=models.IntegerField()
+     design=models.IntegerField(choices=list(zip(range(0, 11), range(0, 11))), default=0)
+     usability=models.IntegerField(choices=list(zip(range(0, 11), range(0, 11))), default=0)
+     content=models.IntegerField(choices=list(zip(range(0, 11), range(0, 11))), default=0)
      user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
      project=models.ForeignKey(Project)
      total=models.IntegerField()
