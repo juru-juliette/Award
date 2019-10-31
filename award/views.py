@@ -92,4 +92,23 @@ class ProjectList(APIView):
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@login_required(login_url='/accounts/login/')
+def grade_project(request,id):
+     current_user=request.user
+     project=Project.objects.get(id=id)
+     if request.method == 'POST':
+        form = Gradeform(request.POST, request.FILES)
+        if form.is_valid():
+            grade = form.save(commit=False)
+            grade.user = current_user
+            grade.project=project
+            grade.total=int(form.cleaned_data['design'])+int(form.cleaned_data['content'])+int(form.cleaned_data['usability'])
+            grade.avg= int(grade.total)/3
+            grade.save()
+        return redirect('home')
+
+     else:
+        form = Gradeform()
+     return render(request, 'grade.html', {"form": form, 'proj':project})
+
     
