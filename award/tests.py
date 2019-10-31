@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.db import transaction
 from .models import Project,Profile,Review
 # Create your tests here.
 
@@ -31,19 +32,3 @@ class ProjectTestClass(TestCase):
            self.project.update_description(description)
            self.assertTrue( self.project.description == description) 
 
-class ProfileTestClass(TestCase):
-    def setUp(self):
-        self.image= Profile(photo = 'yuly', bio ='full-stack',phone_number = '07854222',username='yuly')
-    def test_instance(self):
-        self.assertTrue(isinstance(self.image,Profile))
-    def test_save_method(self):
-        self.image.save_profile()
-        images = Profile.objects.all()
-        self.assertTrue(len(images) > 0)
-    def test_delete(self):
-        self.image= Profile(photo = 'yuly', bio ='image',phone_number = '07854222',username='yuly')
-        self.image.save_profile()
-        image = Profile.objects.filter(photo = 'yuly').first()
-        delete = Profile.objects.filter(id = image.id).delete()
-        images = Profile.objects.all()
-        self.assertTrue(len(images) == 0)
